@@ -1,13 +1,13 @@
 import React, {  useEffect } from "react";
 import { connect } from "react-redux";
-import fetchBrands from "../middleware/fetchBrands";
+import fetchBrands from "../actions/fetchBrands";
 import { getBrands } from "../state/selectors";
 
 const Policies = ({ fetchBrands, brands }) => {
   
   useEffect(() => {
     fetchBrands();
-  },[]);
+  },[fetchBrands]);
 
   return (
     <>

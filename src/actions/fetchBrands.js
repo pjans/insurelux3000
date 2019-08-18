@@ -1,22 +1,18 @@
-import instance from "../api/axios";
+import XHR from "../api/axios";
 import {
   FETCH_BRANDS_INIT,
   FETCH_BRANDS_SUCCESS,
   FETCH_BRANDS_FAILURE
-} from "../state/types";
+} from "./types";
 
 const fetchBrands = () => {
   return dispatch => {
     dispatch(fetchBrandsInit());
 
-    instance
-      .get("/car/brands")
-      .then(res => {
-        dispatch(fetchBrandsSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fetchBrandsFailure(err.message));
-      });
+    XHR
+      .get(`/car/brands`)
+      .then(res => dispatch(fetchBrandsSuccess(res.data)))
+      .catch(err => dispatch(fetchBrandsFailure(err.message)));
   };
 };
 
