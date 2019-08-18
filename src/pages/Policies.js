@@ -1,32 +1,37 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import fetchBrands from "../actions/fetchBrands";
-import { getBrands } from "../state/selectors";
+import fetchPolicies from "../actions/fetchPolicies";
+import { getPolicies, getIsLoading } from "../state/selectors";
+import Policy from '../shared/Policy';
+import CardDeck from 'react-bootstrap/CardDeck';
+import Spinner from 'react-bootstrap/Spinner';
 
-const Policies = ({ fetchBrands, brands }) => {
-  
+const Policies = ({ fetchPolicies, policies, isLoading }) => {
+
   useEffect(() => {
-    fetchBrands();
-  },[fetchBrands]);
+    fetchPolicies(0, 10);
+  }, [fetchPolicies]);
 
   return (
-    <>
+    <div>
       <h2>Policies</h2>
-      <ul>
-        {brands && brands.map(item => (
-          <li>{item.name}</li>
+      {isLoading && <Spinner animation="border" />}
+      <CardDeck>
+        {policies && policies.map(item => (
+          <Policy key={item.id} {...item} />
         ))}
-      </ul>
-    </>
+      </CardDeck>
+    </div>
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  brands: getBrands(state)
+const mapStateToProps = state => ({
+  policies: getPolicies(state),
+  isLoading: getIsLoading(state)
 });
 
 const mapDispatchToProps = {
-  fetchBrands
+  fetchPolicies
 };
 
 export default connect(

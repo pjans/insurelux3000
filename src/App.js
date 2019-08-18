@@ -3,7 +3,6 @@ import "./App.css";
 import { Main, Policies, AddPolicy } from "./pages";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from "./shared/NavBar";
-import { connect } from "react-redux";
 
 function App() {
   return (
@@ -16,11 +15,4 @@ function App() {
   );
 }
 
-const mapStateToProps = (state, ownProps) => ({ brands: "brandy ze stora" });
-
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
