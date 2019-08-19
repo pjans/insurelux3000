@@ -6,6 +6,6 @@ import { shallow, configure } from 'enzyme';
 configure({adapter: new Adapter()});
 
 it("renders correctly", () => {
-  const wrapper = shallow(<App/>);
-  expect(wrapper).toMatchSnapshot();
+   const wrapper = shallow(<App/>);
+   expect(wrapper).toMatchSnapshot();
 });

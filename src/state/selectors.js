@@ -5,3 +5,5 @@ export const getPolicies = state => state.policies;
 export const getIsLoading = state => state.isLoading;
 
 export const getError = state => state.error;
+
+export const getModels = state => state.models;

@@ -7,34 +7,33 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Spinner from 'react-bootstrap/Spinner';
 
 const Policies = ({ fetchPolicies, policies, isLoading }) => {
+   useEffect(() => {
+      fetchPolicies(0, 100);
+   }, [fetchPolicies]);
 
-  useEffect(() => {
-    fetchPolicies(0, 10);
-  }, [fetchPolicies]);
-
-  return (
-    <div>
-      <h2>Policies</h2>
-      {isLoading && <Spinner animation="border" />}
-      <CardDeck>
-        {policies && policies.map(item => (
-          <Policy key={item.id} {...item} />
-        ))}
-      </CardDeck>
-    </div>
-  );
+   return (
+      <div className="policies">
+         <h2>Policies</h2>
+         {isLoading && <div className="loading"><Spinner animation="border" /></div>}
+         <CardDeck>
+            {policies && policies.map(item => (
+               <Policy key={item.id} {...item} />
+            ))}
+         </CardDeck>
+      </div>
+   );
 };
 
 const mapStateToProps = state => ({
-  policies: getPolicies(state),
-  isLoading: getIsLoading(state)
+   policies: getPolicies(state),
+   isLoading: getIsLoading(state)
 });
 
 const mapDispatchToProps = {
-  fetchPolicies
+   fetchPolicies
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+   mapStateToProps,
+   mapDispatchToProps
 )(Policies);
