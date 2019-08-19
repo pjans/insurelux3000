@@ -13,7 +13,7 @@ const Policies = ({ fetchPolicies, policies, isLoading }) => {
   }, [fetchPolicies]);
 
   return (
-    <div>
+    <div className="policies">
       <h2>Policies</h2>
       {isLoading && <Spinner animation="border" />}
       <CardDeck>
