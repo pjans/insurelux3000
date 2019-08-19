@@ -10,6 +10,9 @@
 .add-policy {
   margin: 2rem 8rem;
 }
+.add-policy span {
+  color: red;
+}
 
 .loading {
   margin: 0 auto;

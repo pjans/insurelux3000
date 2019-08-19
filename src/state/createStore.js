@@ -4,17 +4,17 @@ import thunk from "redux-thunk";
 import reducers from './reducers';
 
 const initialState = {
-  isLoading: false,
-  brands: [],
-  models: [],
-  policies: []
+   isLoading: false,
+   brands: [],
+   models: [],
+   policies: []
 };
 
 const createStore = () =>
-  reduxCreateStore(
-    reducers,
-    initialState,
-    composeWithDevTools(applyMiddleware(thunk))
-  );
+   reduxCreateStore(
+      reducers,
+      initialState,
+      composeWithDevTools(applyMiddleware(thunk))
+   );
 
 export default createStore;

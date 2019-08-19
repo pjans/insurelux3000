@@ -10,8 +10,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 const store = createStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
+   <Provider store={store}>
+      <App />
+   </Provider>,
+   document.getElementById("root")
 );
