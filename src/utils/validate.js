@@ -1,4 +1,4 @@
-const validate = ({ kilometers, owners }) => {
+const validate = ({ kilometers, owners, model }) => {
     let errors = {};
     if (!kilometers) { errors.kilometers = 'Kilometers required'; } 
     if (kilometers < 1000 || kilometers > 50000) {
@@ -7,6 +7,9 @@ const validate = ({ kilometers, owners }) => {
     if (!owners) { errors.owners = 'Owners required'; } 
     if (owners < 1 || owners > 10) {
         errors.owners = 'Owners must be between 1 and 10';
+    }
+    if (!model || model === 'Choose model...') {
+        errors.model = 'You have to chose car model';
     }
     return errors;
 }

@@ -6,6 +6,7 @@ import reducers from './reducers';
 const initialState = {
   isLoading: false,
   brands: [],
+  models: [],
   policies: []
 };
 

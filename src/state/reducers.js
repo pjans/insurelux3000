@@ -7,6 +7,7 @@ import {
   FETCH_POLICIES_FAILURE,
   PREMIUM_CALCULATION_INIT,
   FETCH_MODELS_INIT,
+  FETCH_MODELS_SUCCESS,
   FETCH_MODELS_FAILURE,
   CREATE_POLICY_INIT,
   CREATE_POLICY_FAILURE,
@@ -45,6 +46,12 @@ const reducer = (state, action) => {
         ...state,
         isLoading: false,
         policies: action.payload
+      };
+    case FETCH_MODELS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        models: action.payload
       };
     default:
       return state;

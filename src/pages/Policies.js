@@ -9,7 +9,7 @@ import Spinner from 'react-bootstrap/Spinner';
 const Policies = ({ fetchPolicies, policies, isLoading }) => {
 
   useEffect(() => {
-    fetchPolicies(0, 10);
+    fetchPolicies(0, 100);
   }, [fetchPolicies]);
 
   return (
