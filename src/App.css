@@ -10,3 +10,8 @@
 .add-policy {
   margin: 3rem;
 }
+
+.loading {
+  margin: 0 auto;
+  width: 0;
+}

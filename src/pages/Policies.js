@@ -15,7 +15,7 @@ const Policies = ({ fetchPolicies, policies, isLoading }) => {
   return (
     <div className="policies">
       <h2>Policies</h2>
-      {isLoading && <Spinner animation="border" />}
+      {isLoading && <div className="loading"><Spinner animation="border" /></div>}
       <CardDeck>
         {policies && policies.map(item => (
           <Policy key={item.id} {...item} />

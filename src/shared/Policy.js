@@ -16,7 +16,7 @@ const Policy = ({ id, premium, period: { start, end }, insuranceDetails: { owner
             Owners: {owners}
           </Card.Text>
           <Card.Text>
-            {kilometers} km
+            Milleage: {kilometers} km
           </Card.Text>
           <Card.Text>
             Valid from {formatDate(start)} to {formatDate(end)}

@@ -5,20 +5,23 @@ import {
   CREATE_POLICY_FAILURE
 } from "./types";
 
-const createPolicy = ({ modelId, period: { start, end }, owners, kilometers }) => {
+const createPolicy = ({ modelId, periodStart, periodEnd, owners, kilometers }, push) => {
   return dispatch => {
     dispatch(createPolicyInit());
 
     const params = {
       modelId,
-      period: { start, end },
+      period: { start: periodStart, end: periodEnd },
       owners,
       kilometers
     }
 
     XHR
       .post(`/policy`, params)
-      .then(res => dispatch(createPolicySuccess(res.data)))
+      .then(res => {
+        dispatch(createPolicySuccess(res.data));
+        push("/policies");
+      })
       .catch(err => dispatch(createPolicyFailure(err.message)));
   };
 };
