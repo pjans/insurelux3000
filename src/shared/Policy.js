@@ -10,16 +10,16 @@ const Policy = ({ id, premium, period: { start, end }, insuranceDetails: { owner
             <Card.Body>
                <Card.Title><strong>{brand}</strong> {model}</Card.Title>
                <Card.Text>
-            Premium: {premium}
+                  Premium: {premium}
                </Card.Text>
                <Card.Text>
-            Owners: {owners}
+                  Owners: {owners}
                </Card.Text>
                <Card.Text>
-            Milleage: {kilometers} km
+                  Milleage: {kilometers} km
                </Card.Text>
                <Card.Text>
-            Valid from {formatDate(start)} to {formatDate(end)}
+                  Valid from {formatDate(start)} to {formatDate(end)}
                </Card.Text>
             </Card.Body>
          </Card>
