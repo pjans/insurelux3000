@@ -4,14 +4,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import createPolicy from "../actions/createPolicy";
-import { fetchBrands, fetchModels } from "../actions";
+import { fetchBrands, fetchModels, premiumCalculation } from "../actions";
 import { getIsLoading, getBrands, getModels } from "../state/selectors";
 import DatePickerField from "../shared/DatePickerField";
 import { Formik } from "formik";
 import { addDays, validate } from '../utils';
 
 
-const AddPolicy = ({ createPolicy, brands, fetchBrands, models, fetchModels, history }) => {
+const AddPolicy = ({ createPolicy, brands, fetchBrands, models, fetchModels, premiumCalculation, history }) => {
 
    useEffect(() => {
       fetchBrands();
@@ -19,7 +19,12 @@ const AddPolicy = ({ createPolicy, brands, fetchBrands, models, fetchModels, his
 
    const onSubmit = values => {
       const modelId = models.find(x => x.name === values.model).id;
-      createPolicy({ ...values, modelId }, history.push);
+     
+      if(values.calculate){
+         premiumCalculation({ ...values, modelId });
+      } else {
+         createPolicy({ ...values, modelId }, history.push);
+      }
    };
 
    const onBrandChange = ({ target: { value } }) => {
@@ -34,6 +39,7 @@ const AddPolicy = ({ createPolicy, brands, fetchBrands, models, fetchModels, his
          <Formik
             onSubmit={onSubmit}
             validate={validate}
+            initialValues={{ calculate: false }}
          >
             {({
                handleSubmit,
@@ -105,8 +111,11 @@ const AddPolicy = ({ createPolicy, brands, fetchBrands, models, fetchModels, his
                         />
                      </Form.Group>}
                   </Form.Row>
-                  <Button variant="primary" type="submit" value="submit" disabled={isSubmitting || !isValid}>
-                Add policy
+                  <Button id="add-policy-button" variant="primary" type="submit"  disabled={!isValid}>
+                     Add policy
+                  </Button>
+                  <Button id="calculate-policy-button" onClick={()=>setFieldValue('calculate',true)} variant="secondary" type="submit" disabled={!isValid}>
+                     Calculate
                   </Button>
                </Form>
             )}
@@ -124,7 +133,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
    createPolicy,
    fetchBrands,
-   fetchModels
+   fetchModels,
+   premiumCalculation
 };
 
 export default connect(
