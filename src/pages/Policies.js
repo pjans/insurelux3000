@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import fetchPolicies from "../actions/fetchPolicies";
 import { getPolicies, getIsLoading } from "../state/selectors";
 import Policy from '../shared/Policy';
-import CardDeck from 'react-bootstrap/CardDeck';
-import Spinner from 'react-bootstrap/Spinner';
+import { CardDeck, Spinner } from 'react-bootstrap';
 
 const Policies = ({ fetchPolicies, policies, isLoading }) => {
    useEffect(() => {
@@ -15,7 +14,7 @@ const Policies = ({ fetchPolicies, policies, isLoading }) => {
       <div className="policies">
          <h2>Policies</h2>
          {isLoading && <div className="loading"><Spinner animation="border" /></div>}
-         <CardDeck>
+         <CardDeck className="d-flex justify-content-center">
             {policies && policies.map(item => (
                <Policy key={item.id} {...item} />
             ))}

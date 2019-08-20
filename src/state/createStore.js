@@ -7,7 +7,8 @@ const initialState = {
    isLoading: false,
    brands: [],
    models: [],
-   policies: []
+   policies: [],
+   calculationResult: null,
 };
 
 const createStore = () =>

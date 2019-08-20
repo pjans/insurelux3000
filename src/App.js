@@ -7,10 +7,12 @@ import NavBar from "./shared/NavBar";
 function App() {
    return (
       <Router>
-         <NavBar />
-         <Route path="/" exact component={Main} />
-         <Route path="/policies/" component={Policies} />
-         <Route path="/add-policy/" component={AddPolicy} />
+         <div className="container">
+            <NavBar />
+            <Route path="/" exact component={Main} />
+            <Route path="/policies/" component={Policies} />
+            <Route path="/add-policy/" component={AddPolicy} />
+         </div>
       </Router>
    );
 }
