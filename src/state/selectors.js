@@ -7,3 +7,5 @@ export const getIsLoading = state => state.isLoading;
 export const getError = state => state.error;
 
 export const getModels = state => state.models;
+
+export const getCalculationResult = state => state.calculationResult;

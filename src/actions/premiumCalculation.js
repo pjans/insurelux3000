@@ -13,13 +13,10 @@ const premiumCalculation = ({ modelId, periodStart, periodEnd, owners, kilometer
       const end = new Intl.DateTimeFormat('en-US').format(periodEnd);
 
       const url = `calculator/premium?modelId=${modelId}&period.start=${start}&period.end=${end}&kilometers=${kilometers}&owners=${owners}`
-    
+
       XHR
          .get(url)
-         .then(res => {
-            dispatch(premiumCalculationSuccess(res.data));
-            alert(res.data);
-         })
+         .then(res => dispatch(premiumCalculationSuccess(res.data)))
          .catch(err => dispatch(premiumCalculationFailure(err.message)));
    };
 };

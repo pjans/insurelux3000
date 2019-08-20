@@ -6,12 +6,13 @@ import {
    FETCH_POLICIES_SUCCESS,
    FETCH_POLICIES_FAILURE,
    PREMIUM_CALCULATION_INIT,
+   PREMIUM_CALCULATION_FAILURE,
+   PREMIUM_CALCULATION_SUCCESS,
    FETCH_MODELS_INIT,
    FETCH_MODELS_SUCCESS,
    FETCH_MODELS_FAILURE,
    CREATE_POLICY_INIT,
    CREATE_POLICY_FAILURE,
-   PREMIUM_CALCULATION_FAILURE,
 } from "../actions/types";
 
 const reducer = (state, action) => {
@@ -52,6 +53,12 @@ const reducer = (state, action) => {
          ...state,
          isLoading: false,
          models: action.payload
+      };
+   case PREMIUM_CALCULATION_SUCCESS:
+      return {
+         ...state,
+         isLoading: false,
+         calculationResult: action.payload
       };
    default:
       return state;
